@@ -5,9 +5,23 @@ const mysql = require('mysql');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// In-memory storage for tasks
-let tasks = [];
+// // In-memory storage for tasks
+// let tasks = [];
 
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: '',
+    password: '',
+    database: 'taskmanager'
+  });
+
+  connection.connect((err) => {
+    if (err) {
+      console.error('Error connecting to MySQL database:', err);
+      return;
+    }
+    console.log('Connected to MySQL database');
+  });
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
@@ -92,3 +106,4 @@ app.delete('/tasks/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+module.exports = connection;
