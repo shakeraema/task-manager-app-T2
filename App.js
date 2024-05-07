@@ -5,14 +5,14 @@ const mysql = require('mysql');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// // In-memory storage for tasks
-// let tasks = [];
+// In-memory storage for tasks
+let tasks = [];
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: '',
+    user: 'root',
     password: '',
-    database: 'taskmanager'
+    database: 'MyTask'
   });
 
   connection.connect((err) => {
