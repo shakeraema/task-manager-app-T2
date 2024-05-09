@@ -1,8 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const mysql = require('mysql');
-// const bcrypt = require('bcryptjs');
-// const jwt = require('jsonwebtoken');
 const userRoutes = require('./routes/authRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const dotenv = require('dotenv');
