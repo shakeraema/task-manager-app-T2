@@ -130,11 +130,11 @@ router.post('/addTask', verifyToken, async (req, res) => {
 });
   
 // Route to delete a task ( admin only)
-router.delete('/tasks/:id', verifyToken, isAdmin, async (req, res) => {
+router.delete('/deleteOtherTasks/:id', verifyToken, isAdmin, async (req, res) => {
     try {
         const taskId = req.params.id;
         const query = 'DELETE FROM tasks WHERE id = ?';
-        await dbConnection.query(query, [taskId]);
+        await connection.query(query, [taskId]);
         res.json({ message: 'Task deleted successfully' });
     } catch (error) {
         console.error('Error deleting task:', error);
